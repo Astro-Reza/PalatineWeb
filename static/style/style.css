@@ -1,0 +1,375 @@
+:root {
+    --bg-color: #141414;
+    /* Dark gray/black background matching the design */
+    --text-color: #ffffff;
+    --text-muted: #b0b0b0;
+    --divider-color: #444444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Geologica', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Header / Hero Section --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    /* Updated to use relative path for the external CSS file */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.4) 70%, var(--bg-color) 100%),
+        url("../img/earth.jpg") no-repeat center center / cover;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 2.5rem 4rem;
+    gap: 4rem;
+    z-index: 10;
+}
+
+.logo img {
+    height: 20px;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    max-width: 900px;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* --- Typewriter Effect --- */
+#typewriter-text {
+    font-style: italic;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    width: 4px;
+    background-color: var(--text-color);
+    animation: blink 0.7s step-end infinite;
+    margin-left: 4px;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: var(--text-color);
+    }
+}
+
+.btn {
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* --- Content Container --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--divider-color);
+    margin: 3.5rem 0;
+}
+
+/* --- About Section --- */
+.about-section {
+    display: flex;
+    gap: 5rem;
+    padding: 1rem 0;
+}
+
+.about-title {
+    flex: 1;
+}
+
+.about-title h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.about-text {
+    flex: 2;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* --- Orbit-Link Preview Section --- */
+.orbit-section {
+    display: flex;
+    gap: 4rem;
+    padding: 1rem 0 6rem 0;
+    align-items: center;
+}
+
+.video-container {
+    flex: 1;
+    aspect-ratio: 16 / 9;
+    background-color: #222;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.orbit-content {
+    flex: 1;
+}
+
+.orbit-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.orbit-content p {
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-weight: 300;
+    font-size: 1.05rem;
+}
+
+/* --- Mission Section --- */
+.mission-section {
+    padding: 2rem 0 8rem 0;
+    text-align: center;
+}
+
+.mission-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+}
+
+.mission-box {
+    background-color: #080808;
+    /* Darker black */
+    padding: 3.5rem 4rem;
+    border-radius: 12px;
+    /* Small rounded square/rect */
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.mission-box h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.mission-box p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* --- Footer Styles --- */
+.site-footer {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 3rem 0 1.5rem 0;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 110px;
+    max-width: 350px;
+}
+
+.footer-logo {
+    height: 18px; /* Slightly smaller logo to match smaller text */
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+}
+
+.copyright-info {
+    margin-top: auto;
+}
+
+.copyright-text {
+    font-size: 0.72rem; /* 80% of 0.9rem */
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+}
+
+.legal-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.legal-links li {
+    margin-bottom: 0.2rem;
+}
+
+.legal-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.56rem; /* 80% of 0.7rem */
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: var(--text-color);
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading {
+    color: var(--text-muted);
+    font-size: 0.72rem; /* 80% of 0.9rem */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-nav ul a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.76rem; /* 80% of 0.95rem */
+    font-weight: 300;
+    transition: opacity 0.3s ease;
+}
+
+.footer-nav ul a:hover {
+    opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .footer-container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .footer-brand {
+        min-height: auto;
+    }
+
+    .about-section,
+    .orbit-section {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

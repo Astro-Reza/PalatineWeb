@@ -1,0 +1,168 @@
+<!-- Footer Section -->
+<style>
+    /* --- Footer Styles --- */
+    .site-footer {
+        background-color: var(--bg-color, #141414);
+        color: var(--text-color, #ffffff);
+        /* Reduced vertical padding to make the height shorter */
+        padding: 3rem 0 1.5rem 0;
+        font-family: 'Geologica', sans-serif;
+    }
+
+    .footer-container {
+        /* Increased max-width and decreased padding for less left/right empty space */
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        /* Increased inner gap for a minimalistic, spacious design */
+    }
+
+    /* Column 1: Branding & Legal */
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 110px;
+        /* Reduced to fit the shorter height */
+        max-width: 350px;
+    }
+
+    .footer-logo {
+        height: 20px;
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+
+    .copyright-info {
+        margin-top: auto;
+    }
+
+    .copyright-text {
+        font-size: 0.9rem;
+        font-weight: 400;
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.5px;
+    }
+
+    .legal-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .legal-links li {
+        margin-bottom: 0.2rem;
+    }
+
+    .legal-links a {
+        color: #888888;
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-weight: 300;
+        transition: color 0.3s ease;
+    }
+
+    .legal-links a:hover {
+        color: #ffffff;
+    }
+
+    /* Columns 2-4: Navigation */
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-heading {
+        color: #888888;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-nav ul li {
+        margin-bottom: 0.6rem;
+    }
+
+    .footer-nav ul a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 300;
+        transition: opacity 0.3s ease;
+    }
+
+    .footer-nav ul a:hover {
+        opacity: 0.7;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .footer-brand {
+            min-height: auto;
+        }
+    }
+</style>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Column 1: Logo and Copyright -->
+        <div class="footer-brand">
+            <img src="{{ url_for('static', filename='icon/palatine-logo.svg') }}" alt="Palatine Logo"
+                class="footer-logo">
+
+            <div class="copyright-info">
+                <p class="copyright-text">COPYRIGHT &copy; 2026 PALATINE TECHNOLOGIES</p>
+                <ul class="legal-links">
+                    <li><a href="#">License</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Column 2: Company -->
+        <div class="footer-nav">
+            <h3 class="footer-heading">COMPANY</h3>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Mission</a></li>
+                <li><a href="#">GitHub</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3: Original Creators -->
+        <div class="footer-nav">
+            <h3 class="footer-heading">ORIGINAL CREATORS</h3>
+            <ul>
+                <li><a href="#">Vortexa Selenic Team</a></li>
+                <li><a href="#">NASA Space Apps Jakarta 2025</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 4: Research -->
+        <div class="footer-nav">
+            <h3 class="footer-heading">RESEARCH</h3>
+            <ul>
+                <li><a href="#">2026 Whitepaper</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
