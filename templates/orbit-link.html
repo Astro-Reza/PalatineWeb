@@ -39,7 +39,22 @@
                 <li><a href="#">AWARDS</a></li>
                 <li><a href="#">MEMBERS</a></li>
             </ul>
+            <button class="burger" id="burger-btn" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
+
+        <!-- Mobile Nav Overlay -->
+        <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+            <ul class="mobile-nav-links">
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('orbit_link') }}">Orbit-Link</a></li>
+                <li><a href="#">AWARDS</a></li>
+                <li><a href="#">MEMBERS</a></li>
+            </ul>
+        </div>
 
         <div class="hero-content">
             <h1>ORBIT-LINK</h1>

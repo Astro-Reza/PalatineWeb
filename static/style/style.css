@@ -213,9 +213,9 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 80px;
+    font-size: clamp(32px, 7.5vw, 80px);
     font-weight: 700;
-    line-height: 1.0;
+    line-height: 1.05;
     letter-spacing: -0.02em;
     max-width: 900px;
     margin-bottom: 2rem;
@@ -535,6 +535,111 @@ hr {
 }
 
 /* ==========================================================================
+   Burger Menu Button (hidden on desktop)
+   ========================================================================== */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    z-index: 200;
+    flex-shrink: 0;
+}
+
+.burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--inverse-ink);
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                width 0.25s ease;
+    transform-origin: center;
+}
+
+/* Animated → X state */
+.burger.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.burger.is-open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.burger.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Mobile Nav Overlay
+   ========================================================================== */
+.mobile-nav {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 20, 20, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.35s;
+    pointer-events: none;
+}
+
+.mobile-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mobile-nav-links li {
+    overflow: hidden;
+}
+
+/* display-md token: 40px / 700 for mobile nav items */
+.mobile-nav-links a {
+    display: block;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--inverse-ink);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--primary);
+}
+
+/* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
 @media (max-width: 768px) {
@@ -554,16 +659,27 @@ hr {
         gap: 2rem;
     }
 
-    /* display-lg for mobile hero: 56px / 700 */
+    /* display-lg for mobile hero: clamp size for smooth flow without breaking long words like 'Commercialization' */
     .hero-content h1 {
-        font-size: 56px;
-        line-height: 1.05;
+        font-size: clamp(28px, 6.5vw, 56px);
+        line-height: 1.1;
         letter-spacing: -0.01em;
     }
 
+    /* Show burger, hide desktop nav links */
+    .burger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
     nav {
-        flex-direction: column;
-        gap: 1.5rem;
+        padding: 1.5rem 1.5rem;
+        justify-content: space-between;
+        position: relative;
+        z-index: 200;
     }
 }
 
