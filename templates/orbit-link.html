@@ -18,6 +18,11 @@
 <body>
 
     <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="{{ url_for('static', filename='vid/OrbitLinkHero.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
         <nav>
             <div class="logo">
                 <img src="{{ url_for('static', filename='icon/palatine-logo.svg') }}" alt="Palatine Logo">
@@ -46,7 +51,7 @@
 
         <section class="orbit-section" id="orbit-link">
             <div class="video-container">
-                <video controls autoplay muted loop>
+                <video autoplay muted loop playsinline>
                     <source src="{{ url_for('static', filename='vid/orbit-link-preview.mp4') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -55,6 +60,19 @@
                 <h2>The Mission Design Tool</h2>
                 <p>Orbit-Link is a mission design tool that leverages cutting-edge AI to plan space missions. A
                     techno-economic analysis tool built for satellite constellation planning.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="about-section" id="what-is-orbit-link">
+            <div class="about-title">
+                <h2>WHAT IS ORBIT-LINK?</h2>
+            </div>
+            <div class="about-text">
+                <p><strong>Orbit-Link</strong> is a sophisticated, data-driven pre-mission consultancy platform designed for satellite operators. It serves as a comprehensive <strong>Decision Support System (DSS)</strong>, enabling rapid visualization, optimization, and session-based management of Low Earth Orbit (LEO) satellite constellations.</p>
+                <p>Users provide inputs including satellite parameters such as orbital altitude, satellite count, and frequency band, alongside population density data and cost assumptions covering both capital and operational expenditure. The platform processes these inputs through an integrated simulation engine that performs link budget modelling, coverage mapping, subscriber cost estimation, and financial projection, producing outputs in the form of regional coverage maps, cost per user estimates, revenue projections, and ROI and investment feasibility indicators. The platform is designed to be open-source, interactive, and scenario-driven, enabling users to explore multiple constellation configurations without requiring deep engineering expertise.</p>
+                <p>Ultimately, this platform enables data-driven decision-making for satellite deployment, reducing the cost of pre-investment analysis and improving the probability of commercially and socially successful connectivity outcomes. By making rigorous techno-economic simulation accessible to a broader range of stakeholders beyond academic researchers, this work directly supports Indonesia's ambition to connect its remaining 57 million unconnected citizens and contributes to the global agenda of equitable, sustainable, and economically viable digital infrastructure for underserved regions.</p>
             </div>
         </section>
 

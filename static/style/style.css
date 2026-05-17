@@ -1,36 +1,91 @@
+/* ==========================================================================
+   Palatine Brand Design System — CSS Implementation
+   Source: design systems/DESIGN.md
+   ========================================================================== */
+
 :root {
-    --bg-color: #141414;
-    /* Dark gray/black background matching the design */
-    --text-color: #ffffff;
-    --text-muted: #b0b0b0;
-    --divider-color: #444444;
+    /* --- Structural Core (BnW Foundation) --- */
+    --ink: #141414;
+    --canvas: #f1f1f1;
+    --surface: #ffffff;
+    --hairline: #cccccc;
+
+    /* --- Inverse Structural (Dark Mode — Primary Layout) --- */
+    --inverse-ink: #f1f1f1;
+    --inverse-canvas: #141414;
+    --inverse-surface: #242424;
+    --inverse-hairline: #333333;
+
+    /* --- The Signature --- */
+    --primary: #D9FF7F;
+    --on-primary: #141414;
+
+    /* --- Semantic Accents --- */
+    --semantic-danger: #FF5858;
+    --semantic-warning: #F1FF58;
+    --semantic-special: #4a90e2;
+
+    /* --- Derived / Utility --- */
+    --text-muted: #a0a0a0;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Geologica', sans-serif;
+    font-family: "Geologica", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--inverse-canvas);
+    color: var(--inverse-ink);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Header / Hero Section --- */
+/* ==========================================================================
+   Header / Hero Section
+   ========================================================================== */
 .hero {
     position: relative;
     height: 100vh;
     min-height: 600px;
     display: flex;
     flex-direction: column;
-    /* Updated to use relative path for the external CSS file */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.4) 70%, var(--bg-color) 100%),
+    overflow: hidden;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.2) 20%,
+            rgba(0, 0, 0, 0.4) 70%,
+            var(--inverse-canvas) 100%),
         url("../img/earth.jpg") no-repeat center center / cover;
 }
 
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.2) 20%,
+            rgba(0, 0, 0, 0.4) 70%,
+            var(--inverse-canvas) 100%);
+    z-index: 2;
+}
+
+/* --- Navigation (nav-link token: 14px / 400 / 0.5px) --- */
 nav {
     display: flex;
     align-items: center;
@@ -50,12 +105,13 @@ nav {
     list-style: none;
 }
 
-.nav-links > li > a {
-    color: var(--text-color);
+.nav-links>li>a {
+    color: var(--inverse-ink);
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.5px;
+    line-height: 1.4;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
     border-radius: 6px;
@@ -63,10 +119,11 @@ nav {
     display: inline-block;
 }
 
-.nav-links > li > a:hover, .nav-links > li > a.active,
-.nav-links > li.dropdown:hover > a {
+.nav-links>li>a:hover,
+.nav-links>li>a.active,
+.nav-links>li.dropdown:hover>a {
     background-color: rgba(0, 0, 0, 0.4);
-    color: var(--text-color);
+    color: var(--primary);
     font-weight: 700;
 }
 
@@ -75,7 +132,7 @@ nav {
     position: relative;
     display: flex;
     align-items: center;
-    padding-bottom: 0.5rem; /* Add this to extend the trigger's hitbox */
+    padding-bottom: 0.5rem;
 }
 
 .dropdown-menu {
@@ -102,10 +159,10 @@ nav {
 .dropdown-menu::before {
     content: "";
     position: absolute;
-    top: -20px; /* Reaches up to cover the 15px translateY gap */
+    top: -20px;
     left: 0;
     right: 0;
-    height: 20px; /* The height of the invisible bridge */
+    height: 20px;
     background: transparent;
 }
 
@@ -122,12 +179,15 @@ nav {
     z-index: 10;
 }
 
+/* Dropdown links use body-sm token: 14px / 300 */
 .dropdown-menu a {
     display: block;
     padding: 0.7rem 1.2rem;
     text-transform: none;
-    text-decoration: none; /* Removed underline */
-    font-size: 0.85rem;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
     color: var(--text-muted);
     border-radius: 6px;
     transition: all 0.3s ease;
@@ -136,10 +196,11 @@ nav {
 }
 
 .dropdown-menu a:hover {
-    color: var(--text-color);
+    color: var(--primary);
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* --- Hero Content (display-xl: 80px / 700 / -0.02em) --- */
 .hero-content {
     flex: 1;
     display: flex;
@@ -152,10 +213,11 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 4.5rem;
-    font-weight: 800;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
     max-width: 900px;
-    line-height: 1.1;
     margin-bottom: 2rem;
     text-transform: uppercase;
 }
@@ -168,7 +230,7 @@ nav {
 .typewriter-cursor {
     display: inline-block;
     width: 4px;
-    background-color: var(--text-color);
+    background-color: var(--primary);
     animation: blink 0.7s step-end infinite;
     margin-left: 4px;
     vertical-align: bottom;
@@ -182,29 +244,36 @@ nav {
     }
 
     50% {
-        background-color: var(--text-color);
+        background-color: var(--primary);
     }
 }
 
+/* --- Button (button token: 14px / 700 / 1.5px) --- */
 .btn {
-    padding: 0.6rem 1.5rem;
-    border: 1px solid var(--text-color);
+    padding: 0.7rem 1.8rem;
+    border: 1px solid var(--inverse-ink);
     background: transparent;
-    color: var(--text-color);
+    color: var(--inverse-ink);
     border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.0;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .btn:hover {
-    background: var(--text-color);
-    color: var(--bg-color);
+    background: var(--primary);
+    color: var(--on-primary);
+    border-color: var(--primary);
 }
 
-/* --- Content Container --- */
+/* ==========================================================================
+   Content Container
+   ========================================================================== */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -213,11 +282,14 @@ nav {
 
 hr {
     border: 0;
-    border-top: 1px solid var(--divider-color);
+    border-top: 1px solid var(--inverse-hairline);
     margin: 3.5rem 0;
 }
 
-/* --- About Section --- */
+/* ==========================================================================
+   About Section
+   Uses label-uppercase for the section title, body-md for text
+   ========================================================================== */
 .about-section {
     display: flex;
     gap: 5rem;
@@ -228,21 +300,36 @@ hr {
     flex: 1;
 }
 
+/* label-uppercase token: 14px / 700 / 1.5px */
 .about-title h2 {
-    font-size: 1.8rem;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    line-height: 1.3;
+    text-transform: uppercase;
 }
 
+/* body-md token: 16px / 300 / 1.5 */
 .about-text {
     flex: 2;
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.5;
     color: var(--text-muted);
     font-weight: 300;
 }
 
-/* --- Orbit-Link Preview Section --- */
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Orbit-Link Preview Section
+   Uses display-sm for heading, body-md for text
+   ========================================================================== */
 .orbit-section {
     display: flex;
     gap: 4rem;
@@ -253,7 +340,7 @@ hr {
 .video-container {
     flex: 1;
     aspect-ratio: 16 / 9;
-    background-color: #222;
+    background-color: var(--inverse-surface);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -270,64 +357,76 @@ hr {
     flex: 1;
 }
 
+/* display-sm token: 32px / 700 / 0 */
 .orbit-content h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
+    font-size: 32px;
     font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0;
+    margin-bottom: 1.5rem;
 }
 
+/* body-md token: 16px / 300 / 1.5 */
 .orbit-content p {
     margin-bottom: 2.5rem;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--text-muted);
     font-weight: 300;
-    font-size: 1.05rem;
+    font-size: 16px;
 }
 
-/* --- Mission Section --- */
+/* ==========================================================================
+   Mission Section
+   Uses label-uppercase for header, title-lg for box heading, body-md for text
+   ========================================================================== */
 .mission-section {
     padding: 2rem 0 8rem 0;
     text-align: center;
 }
 
+/* label-uppercase token: 14px / 700 / 1.5px */
 .mission-header h2 {
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
+    line-height: 1.3;
     margin-bottom: 2.5rem;
     text-transform: uppercase;
 }
 
 .mission-box {
     background-color: #080808;
-    /* Darker black */
     padding: 3.5rem 4rem;
     border-radius: 12px;
-    /* Small rounded square/rect */
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* title-lg token: 24px / 700 / 0 */
 .mission-box h3 {
-    font-size: 1.8rem;
+    font-size: 24px;
     font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
     margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
 }
 
+/* body-md token: 16px / 300 / 1.5 */
 .mission-box p {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.5;
     color: var(--text-muted);
     font-weight: 300;
 }
 
-/* --- Footer Styles --- */
+/* ==========================================================================
+   Footer Styles
+   Uses caption token for copyright, body-sm for links
+   ========================================================================== */
 .site-footer {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--inverse-canvas);
+    color: var(--inverse-ink);
     padding: 3rem 0 1.5rem 0;
 }
 
@@ -352,7 +451,6 @@ hr {
 
 .footer-logo {
     height: 18px;
-    /* Slightly smaller logo to match smaller text */
     display: block;
     margin-left: 0;
     margin-right: auto;
@@ -363,12 +461,13 @@ hr {
     margin-top: auto;
 }
 
+/* caption token: 12px / 400 / 0.5px */
 .copyright-text {
-    font-size: 0.72rem;
-    /* 80% of 0.9rem */
+    font-size: 12px;
     font-weight: 400;
-    margin-bottom: 0.4rem;
     letter-spacing: 0.5px;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
 }
 
 .legal-links {
@@ -381,17 +480,18 @@ hr {
     margin-bottom: 0.2rem;
 }
 
+/* caption token for legal links */
 .legal-links a {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.56rem;
-    /* 80% of 0.7rem */
-    font-weight: 300;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
     transition: color 0.3s ease;
 }
 
 .legal-links a:hover {
-    color: var(--text-color);
+    color: var(--primary);
 }
 
 .footer-nav {
@@ -399,12 +499,13 @@ hr {
     flex-direction: column;
 }
 
+/* caption token: 12px / 400 / 0.5px */
 .footer-heading {
     color: var(--text-muted);
-    font-size: 0.72rem;
-    /* 80% of 0.9rem */
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.5px;
+    line-height: 1.4;
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
@@ -419,20 +520,23 @@ hr {
     margin-bottom: 0.6rem;
 }
 
+/* body-sm token: 14px / 300 / 0 */
 .footer-nav ul a {
-    color: var(--text-color);
+    color: var(--inverse-ink);
     text-decoration: none;
-    font-size: 0.76rem;
-    /* 80% of 0.95rem */
+    font-size: 14px;
     font-weight: 300;
-    transition: opacity 0.3s ease;
+    line-height: 1.5;
+    transition: color 0.3s ease;
 }
 
 .footer-nav ul a:hover {
-    opacity: 0.7;
+    color: var(--primary);
 }
 
-/* Responsive adjustments */
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
 @media (max-width: 768px) {
 
     .footer-container {
@@ -450,37 +554,57 @@ hr {
         gap: 2rem;
     }
 
+    /* display-lg for mobile hero: 56px / 700 */
     .hero-content h1 {
-        font-size: 3rem;
+        font-size: 56px;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
     }
 
     nav {
         flex-direction: column;
         gap: 1.5rem;
     }
-}/ *   - - -   F u n n e l   S e c t i o n   - - -   * / 
- . f u n n e l - s e c t i o n   { 
-         p a d d i n g :   6 r e m   0 ; 
-         t e x t - a l i g n :   c e n t e r ; 
-         b a c k g r o u n d :   l i n e a r - g r a d i e n t ( 1 8 0 d e g ,   r g b a ( 2 0 ,   2 0 ,   2 0 ,   0 . 5 )   0 % ,   r g b a ( 3 0 ,   3 0 ,   3 0 ,   0 . 8 )   1 0 0 % ) ; 
-         b o r d e r - r a d i u s :   2 0 p x ; 
-         m a r g i n :   4 r e m   0 ; 
-         b o r d e r :   1 p x   s o l i d   v a r ( - - d i v i d e r - c o l o r ) ; 
- } 
- 
- . f u n n e l - c o n t e n t   h 2   { 
-         f o n t - s i z e :   2 . 5 r e m ; 
-         m a r g i n - b o t t o m :   1 . 5 r e m ; 
-         f o n t - w e i g h t :   7 0 0 ; 
- } 
- 
- . f u n n e l - c o n t e n t   p   { 
-         f o n t - s i z e :   1 . 1 r e m ; 
-         c o l o r :   v a r ( - - t e x t - m u t e d ) ; 
-         m a r g i n - b o t t o m :   2 . 5 r e m ; 
-         m a x - w i d t h :   6 0 0 p x ; 
-         m a r g i n - l e f t :   a u t o ; 
-         m a r g i n - r i g h t :   a u t o ; 
-         f o n t - w e i g h t :   3 0 0 ; 
- }  
- 
+}
+
+/* ==========================================================================
+   Funnel / CTA Section
+   Uses display-sm for heading, body-md for text
+   ========================================================================== */
+.funnel-section {
+    padding: 6rem 0;
+    text-align: center;
+    background: var(--on-primary);
+    border-radius: 20px;
+    margin: 4rem 0;
+}
+
+.funnel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* display-sm token: 32px / 700 */
+.funnel-content h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0;
+}
+
+/* body-md token: 16px / 300 / 1.5 */
+.funnel-content p {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 600px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.funnel-content .btn {
+    margin-top: 1rem;
+}
