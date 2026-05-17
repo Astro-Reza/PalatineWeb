@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palatine | Space Mission Planner</title>
+    <title>Palatine | Orbit-Link</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
                 <img src="{{ url_for('static', filename='icon/palatine-logo.svg') }}" alt="Palatine Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="{{ url_for('index') }}" class="active">HOME</a></li>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
                 <li class="dropdown">
                     <a href="#">PRODUCT</a>
                     <ul class="dropdown-menu">
@@ -37,27 +37,11 @@
         </nav>
 
         <div class="hero-content">
-            <h1><span id="typewriter-text"></span><span class="typewriter-cursor">&nbsp;</span></h1>
-            <a href="{{ url_for('orbit_link') }}" class="btn">Explore Orbit-Link</a>
+            <h1>ORBIT-LINK</h1>
         </div>
     </header>
 
     <main class="container">
-        <hr>
-
-        <section class="about-section" id="about-section">
-            <div class="about-title">
-                <h2>ABOUT US</h2>
-            </div>
-            <div class="about-text">
-                <p>Palatine is research and development team created for a semi-independent territory. Palatine’s
-                    contributor can claim their work with pride. The word Palatine carries a weight of history and
-                    structure that reflects our mission. Originating from the Latin palatinus ("of the palace"), it
-                    historically refers to high-ranking medieval officials or nobles who ruled semi-independent
-                    territories known as palatinates.</p>
-            </div>
-        </section>
-
         <hr>
 
         <section class="orbit-section" id="orbit-link">
@@ -68,26 +52,24 @@
                 </video>
             </div>
             <div class="orbit-content">
-                <h2>Orbit-Link</h2>
+                <h2>The Mission Design Tool</h2>
                 <p>Orbit-Link is a mission design tool that leverages cutting-edge AI to plan space missions. A
                     techno-economic analysis tool built for satellite constellation planning.</p>
-                <a href="#" class="btn">Explore Orbit-Link</a>
             </div>
         </section>
 
-        <section class="mission-section" id="mission-section">
-            <div class="mission-header">
-                <h2>THE MISSION</h2>
-            </div>
-            <div class="mission-box">
-                <h3>Building the Future of Space Economy</h3>
-                <p>Palatine builds the future of space economy, building products for the future of humanity space
-                    environment. We build the integrated hardware-software stacks that will define humanity’s presence
+        <hr>
+
+        <section class="funnel-section">
+            <div class="funnel-content">
+                <h2>READY TO EXPLORE?</h2>
+                <p>Build the integrated hardware-software stacks that will define humanity’s presence
                     in the orbital and planetary environments.</p>
+                <a href="#" class="btn">Explore Orbit-Link</a>
             </div>
         </section>
     </main>
-    
+
     <footer class="site-footer">
         <div class="footer-container">
             <!-- Column 1: Logo and Copyright -->
@@ -109,8 +91,8 @@
             <div class="footer-nav">
                 <h3 class="footer-heading">COMPANY</h3>
                 <ul>
-                    <li><a href="#about-section">About</a></li>
-                    <li><a href="#mission-section">Mission</a></li>
+                    <li><a href="{{ url_for('index') }}#about-section">About</a></li>
+                    <li><a href="{{ url_for('index') }}#mission-section">Mission</a></li>
                     <li><a href="#">GitHub</a></li>
                 </ul>
             </div>
